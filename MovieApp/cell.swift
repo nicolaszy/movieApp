@@ -10,18 +10,23 @@ import UIKit
 
 class cell: UITableViewCell {
     
+    var favorited = false
+    var backdropURL:URL! 
+    
     static let reuseIdentifier = String(describing: cell.self)
     static let nibName = String(describing: cell.self)
 
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var rating: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        backgroundImage.clipsToBounds = true
     }
-    @IBOutlet weak var backgroundImage: UIImageView!
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -32,7 +37,19 @@ class cell: UITableViewCell {
         
     }
     
-    public func doSomething(number: Int, navigation: Int){
+    public func addFavorite(model:FavoriteMovieModel){
+        _ = model.getMovieTitle(id: self.movieTitle.text!, backdrop: self.backdropURL)
+        model.changeMovieTitle(id: self.movieTitle.text!, newTitle: movieTitle.text!)
+        self.favorited = true
+        print(model.getMovieTitle(id: self.movieTitle.text!, backdrop: self.backdropURL))
     }
     
+    public func removeFavorite(model:FavoriteMovieModel){
+        
+        self.favorited = false
+        _ = model.removeMovieTitle(id: self.movieTitle.text!)
+    }
+    
+    // Override to support editing the table view.
+   
 }

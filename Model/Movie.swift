@@ -17,10 +17,16 @@ struct Movie {
     let rating: Double
     let overview: String
     let popularity: Double
+    //add genres 
     
     var fullPosterURL:URL?{
         get{
             return URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
+        }
+    }
+    var fullBackdropURL:URL?{
+        get{
+            return URL(string: "https://image.tmdb.org/t/p/w500" + backdrop)
         }
     }
 }
@@ -41,12 +47,19 @@ extension Movie: Decodable {
         let container = try decoder.container(keyedBy: MovieCodingKeys.self)
         
         id = try container.decode(Int.self, forKey: .id)
-        posterPath = try container.decode(String.self, forKey: .posterPath)
-        backdrop = try container.decode(String.self, forKey: .backdrop)
+        do{posterPath = try container.decode(String.self, forKey: .posterPath)}
+        catch{
+            posterPath = ""
+        }
+        do{backdrop = try container.decode(String.self, forKey: .backdrop)}
+        catch{
+            backdrop = ""
+        }
         title = try container.decode(String.self, forKey: .title)
         releaseDate = try container.decode(String.self, forKey: .releaseDate)
         rating = try container.decode(Double.self, forKey: .rating)
         overview = try container.decode(String.self, forKey: .overview)
         popularity = try container.decode(Double.self, forKey: .popularity)
     }
+
 }

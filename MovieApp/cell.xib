@@ -15,34 +15,42 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="cell" customModule="MovieApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqd-FT-ybK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="120.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u4b-qP-WdK">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u4b-qP-WdK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="120.5"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exn-DU-YvS">
+                                <rect key="frame" x="10" y="41.5" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.072387332530000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="u4b-qP-WdK" secondAttribute="trailing" id="429-dm-dHW"/>
                             <constraint firstItem="u4b-qP-WdK" firstAttribute="leading" secondItem="fqd-FT-ybK" secondAttribute="leading" id="IMX-w9-kLG"/>
+                            <constraint firstAttribute="bottom" secondItem="u4b-qP-WdK" secondAttribute="bottom" id="N7a-hr-4uT"/>
                             <constraint firstItem="u4b-qP-WdK" firstAttribute="top" secondItem="fqd-FT-ybK" secondAttribute="top" id="o1U-Rt-xsM"/>
-                            <constraint firstAttribute="height" constant="79.5" id="r7A-nT-82V"/>
-                            <constraint firstAttribute="bottom" secondItem="u4b-qP-WdK" secondAttribute="bottom" id="zvc-13-B9x"/>
+                            <constraint firstAttribute="height" constant="120" id="r7A-nT-82V"/>
+                            <constraint firstItem="exn-DU-YvS" firstAttribute="leading" secondItem="fqd-FT-ybK" secondAttribute="leading" constant="10" id="xxJ-bc-BqV"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="movie title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSU-vT-HV4">
-                        <rect key="frame" x="10" y="10" width="310" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="10" y="10" width="310" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="highlightedColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="exn-DU-YvS" firstAttribute="top" secondItem="kSU-vT-HV4" secondAttribute="bottom" constant="10" id="N0r-Ih-6f8"/>
                     <constraint firstItem="fqd-FT-ybK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NNw-po-V1v"/>
                     <constraint firstAttribute="trailing" secondItem="fqd-FT-ybK" secondAttribute="trailing" id="RJG-bE-9BP"/>
                     <constraint firstItem="kSU-vT-HV4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="TGP-Wu-Iw1"/>
@@ -56,6 +64,7 @@
             <connections>
                 <outlet property="backgroundImage" destination="u4b-qP-WdK" id="71K-Gw-TZe"/>
                 <outlet property="movieTitle" destination="kSU-vT-HV4" id="dcs-3J-Uum"/>
+                <outlet property="rating" destination="exn-DU-YvS" id="rcZ-R1-QrC"/>
                 <outlet property="view" destination="fqd-FT-ybK" id="apD-7h-H5n"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="48.575712143928037"/>

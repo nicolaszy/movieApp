@@ -6,7 +6,8 @@ target 'MovieApp' do
   use_frameworks!
 
   # Pods for MovieApp
-  pod 'Moya', '~> 12.0.1'
-  pod 'Kingfisher', '~> 5.1.0'
+  pod 'Moya'
+  pod 'Kingfisher'
+  pod 'RealmSwift'
 
 end

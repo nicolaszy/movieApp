@@ -20,6 +20,8 @@
 		9F610DE9224001AB00271003 /* TheMovieDB_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F610DE8224001AB00271003 /* TheMovieDB_API.swift */; };
 		9F610DEC224001E900271003 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F610DEB224001E900271003 /* Movie.swift */; };
 		9F610DEE2240020C00271003 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F610DED2240020C00271003 /* Results.swift */; };
+		9FE967E5224CB73B005F39A7 /* FavoriteMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE967E4224CB73B005F39A7 /* FavoriteMovieModel.swift */; };
+		9FE967E7224CB7BC005F39A7 /* FavoriteMovieItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE967E6224CB7BC005F39A7 /* FavoriteMovieItem.swift */; };
 		D2F3D6A76A4954D8322E86FD /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724EBF299B11669D587A012D /* Pods_MovieApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		9F610DE8224001AB00271003 /* TheMovieDB_API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TheMovieDB_API.swift; path = MovieApp/TheMovieDB_API.swift; sourceTree = SOURCE_ROOT; };
 		9F610DEB224001E900271003 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		9F610DED2240020C00271003 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		9FE967E4224CB73B005F39A7 /* FavoriteMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieModel.swift; sourceTree = "<group>"; };
+		9FE967E6224CB7BC005F39A7 /* FavoriteMovieItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieItem.swift; sourceTree = "<group>"; };
 		E8BC404065D3ED348095F20B /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +126,9 @@
 		9F610DEA224001CD00271003 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9FE967E4224CB73B005F39A7 /* FavoriteMovieModel.swift */,
 				9F610DEB224001E900271003 /* Movie.swift */,
+				9FE967E6224CB7BC005F39A7 /* FavoriteMovieItem.swift */,
 				9F610DED2240020C00271003 /* Results.swift */,
 			);
 			path = Model;
@@ -210,6 +216,8 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -219,6 +227,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +267,8 @@
 			files = (
 				9F610DE72240018200271003 /* NetworkManager.swift in Sources */,
 				9F610DE4223F9A8C00271003 /* ViewController2.swift in Sources */,
+				9FE967E7224CB7BC005F39A7 /* FavoriteMovieItem.swift in Sources */,
+				9FE967E5224CB73B005F39A7 /* FavoriteMovieModel.swift in Sources */,
 				9F603CC52236C25700C6F73A /* ViewController.swift in Sources */,
 				9F603CD92236C49600C6F73A /* cell.swift in Sources */,
 				9F610DE9224001AB00271003 /* TheMovieDB_API.swift in Sources */,
@@ -413,13 +425,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GE7W3K472X;
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ch.fhnw.mobileworkshop.MovieApp;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.fhnw.mobileworkshop.MovieApp.nka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -432,13 +445,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GE7W3K472X;
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ch.fhnw.mobileworkshop.MovieApp;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.fhnw.mobileworkshop.MovieApp.nka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
