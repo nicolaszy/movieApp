@@ -15,16 +15,25 @@ class ViewController2: UIViewController {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
-    public var exampleStringProperty: String = "";
+    public var selectedSegment = 0
+    public var movieTitle: String = "";
     public var backgroundUrl = URL(string: "https://www.apple.com")
     override func viewDidLoad() {
         super.viewDidLoad()
-        navBarTitle.title = exampleStringProperty
+        navBarTitle.title = movieTitle
         backgroundImage.clipsToBounds = true
         backgroundImage.kf.setImage(with: backgroundUrl)
-        print(exampleStringProperty)
+        print(movieTitle)
         // Do any additional setup after loading the view.
         
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("I was called...")
+        if let destinationVC = segue.destination as? ViewController{
+            destinationVC.selectedSegment = selectedSegment
+        }
     }
     
 

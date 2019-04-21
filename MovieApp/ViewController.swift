@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     private var movies = [Movie]()
     private var favoriteMovies = [FavoriteMovieItem]()
     private var favorite = false
+    public var selectedSegment = -1
     
     //do your movie model thingie here 
     //private let myCell = cell()
@@ -131,6 +132,10 @@ class ViewController: UIViewController {
     private func setupTableView(){
         movieTable.register(UINib(nibName: cell.nibName, bundle: Bundle.main), forCellReuseIdentifier: cell.reuseIdentifier)
         
+        if(selectedSegment != -1){
+            navigation.selectedSegmentIndex = selectedSegment
+        }
+        
         movieTable.delegate = self
         movieTable.dataSource = self
     }
@@ -147,16 +152,24 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("I was called...")
         if let destinationVC = segue.destination as? ViewController2{
-            destinationVC.exampleStringProperty = self.selectedMovie
+            destinationVC.movieTitle = self.selectedMovie
             destinationVC.backgroundUrl = selectedMovieBackground
+            destinationVC.selectedSegment = navigation.selectedSegmentIndex
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        self.selectedMovie = movies[indexPath.row].title
-        self.selectedMovieBackground = movies[indexPath.row].fullPosterURL!
-        performSegue(withIdentifier: "showMovie", sender: self)
+        if(favorite==false){
+            self.selectedMovie = movies[indexPath.row].title
+            self.selectedMovieBackground = movies[indexPath.row].fullPosterURL!
+            performSegue(withIdentifier: "showMovie", sender: self)
+        }
+        else{
+            self.selectedMovie = favoriteMovies[indexPath.row].movieTitle
+            self.selectedMovieBackground = URL(string: favoriteMovies[indexPath.row].backdrop)
+            performSegue(withIdentifier: "showMovie", sender: self)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
