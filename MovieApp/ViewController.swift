@@ -178,6 +178,16 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             cell.movieTitle.text = movie.title
             cell.rating.text = "rated "+String(movie.rating)
             cell.backdropURL = movie.fullBackdropURL
+            let favorited = model.checkIfMovieExists(id: cell.movieTitle.text!)
+            if(favorited){
+                cell.addedLabel.text = "added"
+                cell.favorited = true
+            }
+            else{
+                cell.addedLabel.text = ""
+                cell.favorited = false
+            }
+            
             //use something else than nibName (e.g. movie title) as identifier so we can use and load favorited as property!!!
             //cell.favorited = model.getMovieTitle(id: cell.nibName)
             
@@ -202,6 +212,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             if let cell = tableView.dequeueReusableCell(withIdentifier: cell.reuseIdentifier, for: indexPath) as? cell{
                 cell.movieTitle.text = movie.movieTitle
                 cell.backdropURL = URL(string: movie.backdrop)
+                cell.addedLabel.text = "added"
                 
                 //cell.rating.text = "rated "+String(movie.rating)
                 //use something else than nibName (e.g. movie title) as identifier so we can use and load favorited as property!!!

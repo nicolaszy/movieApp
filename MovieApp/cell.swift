@@ -16,6 +16,7 @@ class cell: UITableViewCell {
     static let reuseIdentifier = String(describing: cell.self)
     static let nibName = String(describing: cell.self)
 
+    @IBOutlet weak var addedLabel: UILabel!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var rating: UILabel!
@@ -42,12 +43,14 @@ class cell: UITableViewCell {
         model.changeMovieTitle(id: self.movieTitle.text!, newTitle: movieTitle.text!)
         self.favorited = true
         print(model.getMovieTitle(id: self.movieTitle.text!, backdrop: self.backdropURL))
+        addedLabel.text = "added"
     }
     
     public func removeFavorite(model:FavoriteMovieModel){
         
         self.favorited = false
         _ = model.removeMovieTitle(id: self.movieTitle.text!)
+        addedLabel.text = ""
     }
     
     // Override to support editing the table view.
