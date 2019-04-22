@@ -13,8 +13,10 @@ import Realm
 class FavoriteMovieItem: Object {
     @objc dynamic var id:String = ""
     @objc dynamic var movieTitle = ""
-    @objc dynamic var rating = 0
+    @objc dynamic var rating = ""
+    @objc dynamic var overview = ""
     @objc dynamic var backdrop = ""
+    @objc dynamic var actors = ""
     
     
     // tells realm which property is our primary key

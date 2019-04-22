@@ -11,7 +11,10 @@ import UIKit
 class cell: UITableViewCell {
     
     var favorited = false
-    var backdropURL:URL! 
+    var backdropURL:URL!
+    var overview:String!
+    var actors:String!
+    
     
     static let reuseIdentifier = String(describing: cell.self)
     static let nibName = String(describing: cell.self)
@@ -39,10 +42,10 @@ class cell: UITableViewCell {
     }
     
     public func addFavorite(model:FavoriteMovieModel){
-        _ = model.getMovieTitle(id: self.movieTitle.text!, backdrop: self.backdropURL)
+        _ = model.getMovieTitle(id: self.movieTitle.text!, backdrop: self.backdropURL, overview: overview, rating: rating.text!, actors: actors)
         model.changeMovieTitle(id: self.movieTitle.text!, newTitle: movieTitle.text!)
         self.favorited = true
-        print(model.getMovieTitle(id: self.movieTitle.text!, backdrop: self.backdropURL))
+        print(model.getMovieTitle(id: self.movieTitle.text!, backdrop: self.backdropURL, overview: overview, rating: rating.text!, actors: actors))
         addedLabel.text = "added"
     }
     

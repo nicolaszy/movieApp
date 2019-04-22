@@ -13,10 +13,13 @@ class FavoriteMovieModel{
     
     let realm = try! Realm()
     
-    private func createFavoriteMovieItem(id:String, backdrop:URL){
+    private func createFavoriteMovieItem(id:String, backdrop:URL, overview:String, rating:String, actors:String){
         let item = FavoriteMovieItem()
         item.id = id
         item.backdrop = backdrop.absoluteString
+        item.overview = overview
+        item.rating = rating
+        item.actors = actors
         try! realm.write {
             realm.add(item)
         }
@@ -47,13 +50,13 @@ class FavoriteMovieModel{
         else{ return false }
     }
     
-    func getMovieTitle(id:String, backdrop:URL)->String{
+    func getMovieTitle(id:String, backdrop:URL, overview:String, rating:String, actors:String)->String{
         if let item = realm.objects(FavoriteMovieItem.self).filter("id = %@", id).first{
             return item.movieTitle
         }
         else{
             //if no item was found -> create one
-            createFavoriteMovieItem(id: id, backdrop: backdrop)
+            createFavoriteMovieItem(id: id, backdrop: backdrop, overview: overview, rating: rating, actors: actors)
         }
         return ""
     }

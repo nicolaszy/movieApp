@@ -22,6 +22,9 @@ class ViewController: UIViewController {
     private var movies = [Movie]()
     private var favoriteMovies = [FavoriteMovieItem]()
     private var favorite = false
+    public var rating = ""
+    public var overview = ""
+    public var actors = ""
     public var selectedSegment = -1
     
     //do your movie model thingie here 
@@ -134,6 +137,7 @@ class ViewController: UIViewController {
         
         if(selectedSegment != -1){
             navigation.selectedSegmentIndex = selectedSegment
+            navigationSelected((Any).self)
         }
         
         movieTable.delegate = self
@@ -150,11 +154,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("I was called...")
         if let destinationVC = segue.destination as? ViewController2{
             destinationVC.movieTitle = self.selectedMovie
-            destinationVC.backgroundUrl = selectedMovieBackground
-            destinationVC.selectedSegment = navigation.selectedSegmentIndex
+            destinationVC.backgroundUrl = self.selectedMovieBackground
+            destinationVC.selectedSegment = self.navigation.selectedSegmentIndex
+            destinationVC.overview_ = overview
+            destinationVC.ratings_ = rating
+            destinationVC.actors_ = actors
+        
+            
         }
     }
     
@@ -163,11 +171,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         if(favorite==false){
             self.selectedMovie = movies[indexPath.row].title
             self.selectedMovieBackground = movies[indexPath.row].fullPosterURL!
+            self.rating = String(movies[indexPath.row].rating)
+            self.overview = movies[indexPath.row].overview
+            self.actors = String(movies[indexPath.row].id)
             performSegue(withIdentifier: "showMovie", sender: self)
         }
         else{
             self.selectedMovie = favoriteMovies[indexPath.row].movieTitle
             self.selectedMovieBackground = URL(string: favoriteMovies[indexPath.row].backdrop)
+            self.rating = String(favoriteMovies[indexPath.row].rating)
+            self.overview = favoriteMovies[indexPath.row].overview
+            self.actors = String(favoriteMovies[indexPath.row].id)
             performSegue(withIdentifier: "showMovie", sender: self)
         }
     }
@@ -191,6 +205,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             cell.movieTitle.text = movie.title
             cell.rating.text = "rated "+String(movie.rating)
             cell.backdropURL = movie.fullBackdropURL
+            cell.actors = "a"
+            cell.overview = movie.overview
             let favorited = model.checkIfMovieExists(id: cell.movieTitle.text!)
             if(favorited){
                 cell.addedLabel.text = "added"
@@ -226,7 +242,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
                 cell.movieTitle.text = movie.movieTitle
                 cell.backdropURL = URL(string: movie.backdrop)
                 cell.addedLabel.text = "added"
-                
+                cell.actors = "a"
+                cell.overview = movie.overview
+                cell.rating.text = "rated "+String(movie.rating)
                 //cell.rating.text = "rated "+String(movie.rating)
                 //use something else than nibName (e.g. movie title) as identifier so we can use and load favorited as property!!!
                 //cell.favorited = model.getMovieTitle(id: cell.nibName)

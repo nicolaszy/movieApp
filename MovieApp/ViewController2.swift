@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController2: UIViewController {
 
+    @IBOutlet weak var actors: UILabel!
+    @IBOutlet weak var overview: UILabel!
+    @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navBarTitle: UINavigationItem!
     
@@ -18,11 +21,18 @@ class ViewController2: UIViewController {
     public var selectedSegment = 0
     public var movieTitle: String = "";
     public var backgroundUrl = URL(string: "https://www.apple.com")
+    public var overview_: String = ""
+    public var actors_ :String = ""
+    public var ratings_ :String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navBarTitle.title = movieTitle
         backgroundImage.clipsToBounds = true
         backgroundImage.kf.setImage(with: backgroundUrl)
+        overview.text = overview_
+        rating.text = "rating: "+ratings_
+        actors.text = actors_
         print(movieTitle)
         // Do any additional setup after loading the view.
         
