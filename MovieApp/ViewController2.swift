@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController2: UIViewController {
 
+    @IBOutlet weak var watchNextButton: UIButton!
+    @IBOutlet weak var rateButton: UIButton!
     @IBOutlet weak var actors: UILabel!
     @IBOutlet weak var overview: UILabel!
     @IBOutlet weak var rating: UILabel!

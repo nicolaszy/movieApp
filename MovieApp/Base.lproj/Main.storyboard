@@ -111,6 +111,7 @@
                                 <items>
                                     <navigationItem title="Title" largeTitleDisplayMode="always" id="AFE-va-Bqg">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="lqs-Q1-N74">
+                                            <color key="tintColor" red="1" green="0.072387332530000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <connections>
                                                 <segue destination="BYZ-38-t0r" kind="showDetail" identifier="goBack" animates="NO" id="FIi-iy-Vpb"/>
                                             </connections>
@@ -139,6 +140,18 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9P-Yj-zSD">
+                                <rect key="frame" x="271" y="822" width="133" height="30"/>
+                                <state key="normal" title="What to watch next">
+                                    <color key="titleColor" red="1" green="0.072387332530000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSz-Wf-ITv">
+                                <rect key="frame" x="10" y="822" width="105" height="30"/>
+                                <state key="normal" title="Rate this movie">
+                                    <color key="titleColor" red="1" green="0.072387332530000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
@@ -147,17 +160,22 @@
                             <constraint firstItem="hES-wk-QOh" firstAttribute="top" secondItem="O6L-xj-xus" secondAttribute="bottom" constant="10" id="5a1-KS-e6l"/>
                             <constraint firstItem="LPU-td-qdu" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" id="9bd-UF-d2J"/>
                             <constraint firstItem="arV-I1-akr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CS2-g1-DHp" secondAttribute="trailing" constant="10" id="A3k-4k-9e7"/>
+                            <constraint firstItem="XSz-Wf-ITv" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" constant="10" id="EJf-NV-raG"/>
                             <constraint firstItem="pSI-3k-Vkb" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" id="G2c-hs-9fO"/>
                             <constraint firstItem="LPU-td-qdu" firstAttribute="trailing" secondItem="arV-I1-akr" secondAttribute="trailing" id="JPH-4U-sdK"/>
                             <constraint firstItem="O6L-xj-xus" firstAttribute="top" secondItem="CS2-g1-DHp" secondAttribute="bottom" constant="10" id="M2d-t0-ex6"/>
+                            <constraint firstItem="arV-I1-akr" firstAttribute="trailing" secondItem="X9P-Yj-zSD" secondAttribute="trailing" constant="10" id="Na8-Rg-PrL"/>
                             <constraint firstItem="arV-I1-akr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="O6L-xj-xus" secondAttribute="trailing" constant="10" id="OoV-nj-h55"/>
                             <constraint firstItem="O6L-xj-xus" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" constant="10" id="OpY-4t-ukG"/>
                             <constraint firstItem="pSI-3k-Vkb" firstAttribute="top" secondItem="LPU-td-qdu" secondAttribute="bottom" id="QG4-xS-mAk"/>
                             <constraint firstItem="pSI-3k-Vkb" firstAttribute="trailing" secondItem="arV-I1-akr" secondAttribute="trailing" id="Sub-PG-K39"/>
+                            <constraint firstItem="X9P-Yj-zSD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XSz-Wf-ITv" secondAttribute="trailing" constant="8" symbolic="YES" id="Uue-Ib-6iY"/>
                             <constraint firstItem="hES-wk-QOh" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" constant="10" id="YtK-Z3-YfM"/>
+                            <constraint firstItem="arV-I1-akr" firstAttribute="bottom" secondItem="X9P-Yj-zSD" secondAttribute="bottom" constant="10" id="a9O-20-tef"/>
                             <constraint firstItem="pSI-3k-Vkb" firstAttribute="bottom" secondItem="arV-I1-akr" secondAttribute="bottom" id="ao6-9R-a2C"/>
                             <constraint firstItem="CS2-g1-DHp" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" constant="10" id="ciu-2L-VxK"/>
                             <constraint firstItem="arV-I1-akr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hES-wk-QOh" secondAttribute="trailing" constant="10" id="e8T-jh-d53"/>
+                            <constraint firstItem="arV-I1-akr" firstAttribute="bottom" secondItem="XSz-Wf-ITv" secondAttribute="bottom" constant="10" id="lmu-eW-9UY"/>
                             <constraint firstItem="CS2-g1-DHp" firstAttribute="top" secondItem="LPU-td-qdu" secondAttribute="bottom" constant="10" id="zm1-Ja-YFf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="arV-I1-akr"/>
@@ -168,7 +186,9 @@
                         <outlet property="navBar" destination="LPU-td-qdu" id="4Rx-dC-mUw"/>
                         <outlet property="navBarTitle" destination="AFE-va-Bqg" id="hUD-kC-y2x"/>
                         <outlet property="overview" destination="O6L-xj-xus" id="2hR-Zo-hVu"/>
+                        <outlet property="rateButton" destination="XSz-Wf-ITv" id="ncr-bE-n41"/>
                         <outlet property="rating" destination="hES-wk-QOh" id="YNR-tH-SZ3"/>
+                        <outlet property="watchNextButton" destination="X9P-Yj-zSD" id="cQv-xL-ob5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFJ-fe-9AH" userLabel="First Responder" sceneMemberID="firstResponder"/>
