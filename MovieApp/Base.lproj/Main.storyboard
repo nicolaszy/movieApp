@@ -119,10 +119,10 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pSI-3k-Vkb">
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pSI-3k-Vkb">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CS2-g1-DHp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actors" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CS2-g1-DHp">
                                 <rect key="frame" x="10" y="98" width="59.5" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -145,13 +145,35 @@
                                 <state key="normal" title="What to watch next">
                                     <color key="titleColor" red="1" green="0.072387332530000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="watchNextButtonPressed:" destination="Rv6-nH-T99" eventType="touchUpInside" id="UQe-k3-Ess"/>
+                                </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zWh-wN-1SB">
+                                <rect key="frame" x="10" y="784" width="394" height="29"/>
+                                <segments>
+                                    <segment title="bad"/>
+                                    <segment title="alright"/>
+                                    <segment title="awesome"/>
+                                    <segment title="best movie yet"/>
+                                </segments>
+                                <color key="tintColor" red="0.71870952070000005" green="0.052025465069999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSz-Wf-ITv">
                                 <rect key="frame" x="10" y="822" width="105" height="30"/>
                                 <state key="normal" title="Rate this movie">
                                     <color key="titleColor" red="1" green="0.072387332530000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="rateButtonPressed:" destination="Rv6-nH-T99" eventType="touchUpInside" id="iIT-wK-x0C"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fF8-vv-M7A">
+                                <rect key="frame" x="10" y="204.5" width="142" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
@@ -165,6 +187,7 @@
                             <constraint firstItem="LPU-td-qdu" firstAttribute="trailing" secondItem="arV-I1-akr" secondAttribute="trailing" id="JPH-4U-sdK"/>
                             <constraint firstItem="O6L-xj-xus" firstAttribute="top" secondItem="CS2-g1-DHp" secondAttribute="bottom" constant="10" id="M2d-t0-ex6"/>
                             <constraint firstItem="arV-I1-akr" firstAttribute="trailing" secondItem="X9P-Yj-zSD" secondAttribute="trailing" constant="10" id="Na8-Rg-PrL"/>
+                            <constraint firstItem="arV-I1-akr" firstAttribute="trailing" secondItem="zWh-wN-1SB" secondAttribute="trailing" constant="10" id="NeI-yd-aUl"/>
                             <constraint firstItem="arV-I1-akr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="O6L-xj-xus" secondAttribute="trailing" constant="10" id="OoV-nj-h55"/>
                             <constraint firstItem="O6L-xj-xus" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" constant="10" id="OpY-4t-ukG"/>
                             <constraint firstItem="pSI-3k-Vkb" firstAttribute="top" secondItem="LPU-td-qdu" secondAttribute="bottom" id="QG4-xS-mAk"/>
@@ -172,10 +195,15 @@
                             <constraint firstItem="X9P-Yj-zSD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XSz-Wf-ITv" secondAttribute="trailing" constant="8" symbolic="YES" id="Uue-Ib-6iY"/>
                             <constraint firstItem="hES-wk-QOh" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" constant="10" id="YtK-Z3-YfM"/>
                             <constraint firstItem="arV-I1-akr" firstAttribute="bottom" secondItem="X9P-Yj-zSD" secondAttribute="bottom" constant="10" id="a9O-20-tef"/>
+                            <constraint firstItem="arV-I1-akr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fF8-vv-M7A" secondAttribute="trailing" constant="10" id="aBg-oQ-5VP"/>
                             <constraint firstItem="pSI-3k-Vkb" firstAttribute="bottom" secondItem="arV-I1-akr" secondAttribute="bottom" id="ao6-9R-a2C"/>
                             <constraint firstItem="CS2-g1-DHp" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" constant="10" id="ciu-2L-VxK"/>
+                            <constraint firstItem="XSz-Wf-ITv" firstAttribute="top" secondItem="zWh-wN-1SB" secondAttribute="bottom" constant="10" id="dDY-U3-mAa"/>
                             <constraint firstItem="arV-I1-akr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hES-wk-QOh" secondAttribute="trailing" constant="10" id="e8T-jh-d53"/>
+                            <constraint firstItem="fF8-vv-M7A" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" constant="10" id="gnE-oX-oi9"/>
                             <constraint firstItem="arV-I1-akr" firstAttribute="bottom" secondItem="XSz-Wf-ITv" secondAttribute="bottom" constant="10" id="lmu-eW-9UY"/>
+                            <constraint firstItem="zWh-wN-1SB" firstAttribute="leading" secondItem="arV-I1-akr" secondAttribute="leading" constant="10" id="thG-ZK-5I6"/>
+                            <constraint firstItem="fF8-vv-M7A" firstAttribute="top" secondItem="hES-wk-QOh" secondAttribute="bottom" constant="10" id="xll-Y9-TaK"/>
                             <constraint firstItem="CS2-g1-DHp" firstAttribute="top" secondItem="LPU-td-qdu" secondAttribute="bottom" constant="10" id="zm1-Ja-YFf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="arV-I1-akr"/>
@@ -186,8 +214,10 @@
                         <outlet property="navBar" destination="LPU-td-qdu" id="4Rx-dC-mUw"/>
                         <outlet property="navBarTitle" destination="AFE-va-Bqg" id="hUD-kC-y2x"/>
                         <outlet property="overview" destination="O6L-xj-xus" id="2hR-Zo-hVu"/>
+                        <outlet property="personalRating" destination="fF8-vv-M7A" id="VvT-Ob-pdz"/>
                         <outlet property="rateButton" destination="XSz-Wf-ITv" id="ncr-bE-n41"/>
                         <outlet property="rating" destination="hES-wk-QOh" id="YNR-tH-SZ3"/>
+                        <outlet property="ratingBar" destination="zWh-wN-1SB" id="M0x-Lm-5g9"/>
                         <outlet property="watchNextButton" destination="X9P-Yj-zSD" id="cQv-xL-ob5"/>
                     </connections>
                 </viewController>

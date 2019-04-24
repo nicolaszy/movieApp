@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/nicolaskalousek/Documents/GitHub/movieApp/Model/ActorResults.swift">
+   </FileRef>
+   <FileRef
       location = "group:MovieApp.xcodeproj">
    </FileRef>
    <FileRef

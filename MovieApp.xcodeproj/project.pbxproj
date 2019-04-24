@@ -20,6 +20,8 @@
 		9F610DE9224001AB00271003 /* TheMovieDB_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F610DE8224001AB00271003 /* TheMovieDB_API.swift */; };
 		9F610DEC224001E900271003 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F610DEB224001E900271003 /* Movie.swift */; };
 		9F610DEE2240020C00271003 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F610DED2240020C00271003 /* Results.swift */; };
+		9F7672C9226F05FE00F7B671 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7672C8226F05FE00F7B671 /* Actor.swift */; };
+		9F7672CD226F0C1A00F7B671 /* ActorResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7672CC226F0C1A00F7B671 /* ActorResults.swift */; };
 		9FE967E5224CB73B005F39A7 /* FavoriteMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE967E4224CB73B005F39A7 /* FavoriteMovieModel.swift */; };
 		9FE967E7224CB7BC005F39A7 /* FavoriteMovieItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE967E6224CB7BC005F39A7 /* FavoriteMovieItem.swift */; };
 		D2F3D6A76A4954D8322E86FD /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724EBF299B11669D587A012D /* Pods_MovieApp.framework */; };
@@ -43,6 +45,8 @@
 		9F610DE8224001AB00271003 /* TheMovieDB_API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TheMovieDB_API.swift; path = MovieApp/TheMovieDB_API.swift; sourceTree = SOURCE_ROOT; };
 		9F610DEB224001E900271003 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		9F610DED2240020C00271003 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		9F7672C8226F05FE00F7B671 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		9F7672CC226F0C1A00F7B671 /* ActorResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActorResults.swift; path = /Users/nicolaskalousek/Documents/GitHub/movieApp/Model/ActorResults.swift; sourceTree = "<absolute>"; };
 		9FE967E4224CB73B005F39A7 /* FavoriteMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieModel.swift; sourceTree = "<group>"; };
 		9FE967E6224CB7BC005F39A7 /* FavoriteMovieItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieItem.swift; sourceTree = "<group>"; };
 		E8BC404065D3ED348095F20B /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,10 +130,12 @@
 		9F610DEA224001CD00271003 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F7672CC226F0C1A00F7B671 /* ActorResults.swift */,
 				9FE967E4224CB73B005F39A7 /* FavoriteMovieModel.swift */,
 				9F610DEB224001E900271003 /* Movie.swift */,
 				9FE967E6224CB7BC005F39A7 /* FavoriteMovieItem.swift */,
 				9F610DED2240020C00271003 /* Results.swift */,
+				9F7672C8226F05FE00F7B671 /* Actor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,10 +274,12 @@
 				9F610DE72240018200271003 /* NetworkManager.swift in Sources */,
 				9F610DE4223F9A8C00271003 /* ViewController2.swift in Sources */,
 				9FE967E7224CB7BC005F39A7 /* FavoriteMovieItem.swift in Sources */,
+				9F7672C9226F05FE00F7B671 /* Actor.swift in Sources */,
 				9FE967E5224CB73B005F39A7 /* FavoriteMovieModel.swift in Sources */,
 				9F603CC52236C25700C6F73A /* ViewController.swift in Sources */,
 				9F603CD92236C49600C6F73A /* cell.swift in Sources */,
 				9F610DE9224001AB00271003 /* TheMovieDB_API.swift in Sources */,
+				9F7672CD226F0C1A00F7B671 /* ActorResults.swift in Sources */,
 				9F603CC32236C25700C6F73A /* AppDelegate.swift in Sources */,
 				9F610DEE2240020C00271003 /* Results.swift in Sources */,
 				9F610DEC224001E900271003 /* Movie.swift in Sources */,

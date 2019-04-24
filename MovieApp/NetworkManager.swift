@@ -84,4 +84,23 @@ struct NetworkManager: Network {
         }
     }
     
+    func getActorsForMovie(movieId: Int, completion: @escaping ([Actor]) -> ()) {
+
+        provider.request(.credits(id: movieId)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let result = try JSONDecoder().decode(ActorResults.self, from: response.data)
+                    print("count:"+String(result.credits.count))
+                    completion(result.credits)
+                } catch let err {
+                    print("error.....")
+                    print(err)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
 }

@@ -21,11 +21,13 @@ class ViewController: UIViewController {
     private let provider = NetworkManager()
     private var movies = [Movie]()
     private var favoriteMovies = [FavoriteMovieItem]()
+    private var actors = [Actor]();
     private var favorite = false
     public var rating = ""
     public var overview = ""
-    public var actors = ""
+    public var actorNames = ""
     public var selectedSegment = -1
+    public var id = 0
     
     //do your movie model thingie here 
     //private let myCell = cell()
@@ -97,7 +99,6 @@ class ViewController: UIViewController {
     }
     
     private func loadPopularNewMovies(){
-        
         provider.getPopularMovies(page: 1) {[weak self] movies in
             print("\(movies.count) popular movies loaded")
             self?.movies.removeAll()
@@ -160,9 +161,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             destinationVC.selectedSegment = self.navigation.selectedSegmentIndex
             destinationVC.overview_ = overview
             destinationVC.ratings_ = rating
-            destinationVC.actors_ = actors
-        
-            
+            destinationVC.actors_ = actorNames
+            destinationVC.model = self.model
+            destinationVC.id = self.id
         }
     }
     
@@ -173,16 +174,29 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             self.selectedMovieBackground = movies[indexPath.row].fullPosterURL!
             self.rating = String(movies[indexPath.row].rating)
             self.overview = movies[indexPath.row].overview
-            self.actors = String(movies[indexPath.row].id)
-            performSegue(withIdentifier: "showMovie", sender: self)
+            self.actorNames = ""
+            self.id = movies[indexPath.row].id
+            print(self.id)
+            provider.getActorsForMovie(movieId: self.id, completion: {[weak self] actor in
+                print(actor.count)
+                self?.actors.append(contentsOf: actor)
+                if(actor.count>2){
+                self?.actorNames = actor[0].name + ", " + actor[1].name + ", " + actor[2].name + " and more..."
+                }
+                self?.performSegue(withIdentifier: "showMovie", sender: self)
+            })
+            
         }
         else{
             self.selectedMovie = favoriteMovies[indexPath.row].movieTitle
             self.selectedMovieBackground = URL(string: favoriteMovies[indexPath.row].backdrop)
             self.rating = String(favoriteMovies[indexPath.row].rating)
             self.overview = favoriteMovies[indexPath.row].overview
-            self.actors = String(favoriteMovies[indexPath.row].id)
-            performSegue(withIdentifier: "showMovie", sender: self)
+            self.id = favoriteMovies[indexPath.row].id
+            print(self.id)
+            self.actorNames = favoriteMovies[indexPath.row].actors
+            print(self.actorNames)
+            self.performSegue(withIdentifier: "showMovie", sender: self)
         }
     }
     
@@ -205,9 +219,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             cell.movieTitle.text = movie.title
             cell.rating.text = "rated "+String(movie.rating)
             cell.backdropURL = movie.fullBackdropURL
-            cell.actors = "a"
             cell.overview = movie.overview
-            let favorited = model.checkIfMovieExists(id: cell.movieTitle.text!)
+            cell.id = movie.id
+            self.id = movie.id
+            cell.actors = ""
+            let favorited = model.checkIfMovieExists(id: movie.id)
             if(favorited){
                 cell.addedLabel.text = "added"
                 cell.favorited = true
@@ -242,9 +258,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
                 cell.movieTitle.text = movie.movieTitle
                 cell.backdropURL = URL(string: movie.backdrop)
                 cell.addedLabel.text = "added"
-                cell.actors = "a"
                 cell.overview = movie.overview
                 cell.rating.text = "rated "+String(movie.rating)
+                cell.id = movie.id
+                self.id = movie.id
+                cell.actors = ""
                 //cell.rating.text = "rated "+String(movie.rating)
                 //use something else than nibName (e.g. movie title) as identifier so we can use and load favorited as property!!!
                 //cell.favorited = model.getMovieTitle(id: cell.nibName)
@@ -266,11 +284,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
         let cell = tableView.cellForRow(at: indexPath) as! cell
-        let favorited = model.checkIfMovieExists(id: cell.movieTitle.text!)
+        let favorited = model.checkIfMovieExists(id: cell.id)
         let favorite = UIContextualAction(style: .normal, title: "Add Favorite"){(contextualAction, view, ActionPerformed: (Bool) -> ()) in
             if(!favorited){
                 //perform add favorite
-                cell.addFavorite(model: self.model)
+                cell.addFavorite(model: self.model, provider: self.provider)
             }
             else{
                 //perform delete favorite

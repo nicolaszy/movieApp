@@ -13,7 +13,7 @@ class FavoriteMovieModel{
     
     let realm = try! Realm()
     
-    private func createFavoriteMovieItem(id:String, backdrop:URL, overview:String, rating:String, actors:String){
+    private func createFavoriteMovieItem(id:Int, backdrop:URL, overview:String, rating:String, actors:String){
         let item = FavoriteMovieItem()
         item.id = id
         item.backdrop = backdrop.absoluteString
@@ -25,7 +25,7 @@ class FavoriteMovieModel{
         }
     }
     
-    private func removeFavoriteMovieItem(id:String){
+    private func removeFavoriteMovieItem(id:Int){
         print("removing...")
         let itemToDelete = realm.objects(FavoriteMovieItem.self).filter("id = %@", id).first
         try! realm.write {
@@ -43,14 +43,29 @@ class FavoriteMovieModel{
         return allMovies
     }
     
-    func checkIfMovieExists(id:String)->Bool{
+    func checkIfMovieExists(id:Int)->Bool{
         if realm.objects(FavoriteMovieItem.self).filter("id = %@", id).first != nil{
             return true
         }
         else{ return false }
     }
     
-    func getMovieTitle(id:String, backdrop:URL, overview:String, rating:String, actors:String)->String{
+    func setMovieRating(id:Int, movieRating:Int){
+        if let item = realm.objects(FavoriteMovieItem.self).filter("id = %@", id).first{
+            try! realm.write {
+            item.personalRating = movieRating
+            }
+        }
+    }
+    
+    func getMovieRating(id:Int) -> Int{
+        if let item = realm.objects(FavoriteMovieItem.self).filter("id = %@", id).first{
+            return item.personalRating
+        }
+        return -1
+    }
+    
+    func getMovieTitle(id:Int, backdrop:URL, overview:String, rating:String, actors:String)->String{
         if let item = realm.objects(FavoriteMovieItem.self).filter("id = %@", id).first{
             return item.movieTitle
         }
@@ -61,7 +76,7 @@ class FavoriteMovieModel{
         return ""
     }
     
-    func removeMovieTitle(id:String)->String{
+    func removeMovieTitle(id:Int)->String{
         if realm.objects(FavoriteMovieItem.self).filter("id = %@", id).first != nil{
             removeFavoriteMovieItem(id: id)
         }
@@ -72,7 +87,7 @@ class FavoriteMovieModel{
         return ""
     }
     
-    func changeMovieTitle(id:String, newTitle:String){
+    func changeMovieTitle(id:Int, newTitle:String){
         if let item = realm.objects(FavoriteMovieItem.self).filter("id = %@", id).first{
             
             try! realm.write {

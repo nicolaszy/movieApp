@@ -14,6 +14,7 @@ class cell: UITableViewCell {
     var backdropURL:URL!
     var overview:String!
     var actors:String!
+    var id:Int!
     
     
     static let reuseIdentifier = String(describing: cell.self)
@@ -41,18 +42,25 @@ class cell: UITableViewCell {
         
     }
     
-    public func addFavorite(model:FavoriteMovieModel){
-        _ = model.getMovieTitle(id: self.movieTitle.text!, backdrop: self.backdropURL, overview: overview, rating: rating.text!, actors: actors)
-        model.changeMovieTitle(id: self.movieTitle.text!, newTitle: movieTitle.text!)
-        self.favorited = true
-        print(model.getMovieTitle(id: self.movieTitle.text!, backdrop: self.backdropURL, overview: overview, rating: rating.text!, actors: actors))
-        addedLabel.text = "added"
+    public func addFavorite(model:FavoriteMovieModel, provider:NetworkManager){
+        
+        provider.getActorsForMovie(movieId: self.id, completion: {[weak self] actor in
+            print(actor.count)
+            if(actor.count>2){
+                self?.actors = actor[0].name + ", " + actor[1].name + ", " + actor[2].name + " and more..."
+                _ = model.getMovieTitle(id: self?.id ?? 0, backdrop: self?.backdropURL ?? URL(fileURLWithPath: "http://apple.ch"), overview: self?.overview ?? "", rating: self?.rating.text! ?? "", actors: self?.actors ?? "")
+                model.changeMovieTitle(id: self?.id ?? 0, newTitle: self?.movieTitle.text! ?? "")
+                self?.favorited = true
+                self?.addedLabel.text = "added"
+            }
+        })
+        
     }
     
     public func removeFavorite(model:FavoriteMovieModel){
         
         self.favorited = false
-        _ = model.removeMovieTitle(id: self.movieTitle.text!)
+        _ = model.removeMovieTitle(id: self.id)
         addedLabel.text = ""
     }
     
