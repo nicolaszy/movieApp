@@ -30,6 +30,7 @@ class ViewController2: UIViewController {
     public var ratings_ :String = ""
     public var id:Int = 0
     public var model = FavoriteMovieModel()
+    public var isFavorite = false
     
     @IBAction func rateButtonPressed(_ sender: Any) {
         rateButton.setTitle("", for: UIControl.State.normal)
@@ -82,6 +83,10 @@ class ViewController2: UIViewController {
         }
         else{
             personalRating.text = "Rate this movie to show personal rating"
+        }
+        
+        if(!self.isFavorite){
+            rateButton.isHidden = true
         }
         
     }

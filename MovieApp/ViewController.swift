@@ -164,6 +164,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             destinationVC.actors_ = actorNames
             destinationVC.model = self.model
             destinationVC.id = self.id
+            destinationVC.isFavorite = self.favorite
         }
     }
     
