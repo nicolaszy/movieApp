@@ -103,4 +103,24 @@ struct NetworkManager: Network {
         }
     }
     
+    
+    func getRecommendationsForMovie(movieId: Int, completion: @escaping ([Movie]) -> ()) {
+        
+        provider.request(.recommended(id: movieId)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let result = try JSONDecoder().decode(Results.self, from: response.data)
+                    print("count:"+String(result.movies.count))
+                    completion(result.movies)
+                } catch let err {
+                    print("error.....")
+                    print(err)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
 }

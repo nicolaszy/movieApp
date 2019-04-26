@@ -31,11 +31,22 @@ class ViewController2: UIViewController {
     public var id:Int = 0
     public var model = FavoriteMovieModel()
     public var isFavorite = false
+    private let provider = NetworkManager()
+    private var recommendedMovies = [Movie]()
+
     
     @IBAction func rateButtonPressed(_ sender: Any) {
+        if(rateButton.title(for: UIControl.State.normal) == "Rate this movie"){
         rateButton.setTitle("", for: UIControl.State.normal)
         watchNextButton.setTitle("Submit rating", for: UIControl.State.normal)
         ratingBar.isHidden = false
+        }
+        else if(rateButton.title(for: UIControl.State.normal) == "Add Favorite"){
+            _ = model.getMovieTitle(id: id, backdrop: backgroundUrl!, overview: overview_, rating: ratings_, actors: actors_)
+            model.changeMovieTitle(id: id, newTitle: title!)
+            print(model.getMovieTitle(id: id, backdrop: backgroundUrl!, overview: overview_, rating: ratings_, actors: actors_))
+            rateButton.setTitle("Added", for: UIControl.State.normal)
+        }
     }
     
     @IBAction func watchNextButtonPressed(_ sender: Any) {
@@ -61,10 +72,38 @@ class ViewController2: UIViewController {
         }
         else{
             //show movies to watch next
-        }
-    
+            provider.getRecommendationsForMovie(movieId: id) {[weak self] movies in
+                print("\(movies.count) new movies loaded")
+                self?.recommendedMovies.removeAll()
+                self?.recommendedMovies.append(contentsOf: movies)
+                let recommendationNumber = Int.random(in: 0...4)
+                self?.backgroundImage.kf.setImage(with: movies[recommendationNumber].fullPosterURL)
+                self?.backgroundUrl = movies[recommendationNumber].fullPosterURL
+                self?.id = movies[recommendationNumber].id
+                self?.movieTitle = movies[recommendationNumber].title
+                print("movie title:"+movies[recommendationNumber].title)
+                self?.title = movies[recommendationNumber].title
+                self?.navBarTitle.title = movies[recommendationNumber].title
+                var actorNames = ""
+                var myActors = [Actor]();
+                self?.provider.getActorsForMovie(movieId: self?.id ?? 0, completion: {[weak self] actor in
+                    print(actor.count)
+                    myActors.append(contentsOf: actor)
+                    if(actor.count>2){
+                        actorNames = actor[0].name + ", " + actor[1].name + ", " + actor[2].name + " and more..."
+                    }
+                    self?.actors_ = actorNames
+                    self?.actors.text = self?.actors_
+                })
+                self?.overview.text = movies[recommendationNumber].overview
+                self?.ratings_ = String(movies[recommendationNumber].rating)
+                self?.rating.text = "rating: " + self!.ratings_
+                self?.rateButton.setTitle("Add Favorite", for: UIControl.State.normal)
+                self?.personalRating.isHidden = true
+                self?.rateButton.isHidden = false
+                }
+            }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
