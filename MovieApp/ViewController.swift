@@ -194,6 +194,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             self.rating = String(favoriteMovies[indexPath.row].rating)
             self.overview = favoriteMovies[indexPath.row].overview
             self.id = favoriteMovies[indexPath.row].id
+            self.rating = favoriteMovies[indexPath.row].rating
             print(self.id)
             self.actorNames = favoriteMovies[indexPath.row].actors
             print(self.actorNames)
@@ -221,6 +222,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             cell.rating.text = "rated "+String(movie.rating)
             cell.backdropURL = movie.fullBackdropURL
             cell.overview = movie.overview
+            cell.ratingScore = String(movie.rating)
             cell.id = movie.id
             self.id = movie.id
             cell.actors = ""
@@ -261,6 +263,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
                 cell.addedLabel.text = "added"
                 cell.overview = movie.overview
                 cell.rating.text = "rated "+String(movie.rating)
+                cell.ratingScore = String(movie.rating)
                 cell.id = movie.id
                 self.id = movie.id
                 cell.actors = ""

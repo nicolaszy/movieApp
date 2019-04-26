@@ -20,7 +20,6 @@ class ViewController2: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var personalRating: UILabel!
     
-    
     @IBOutlet weak var ratingBar: UISegmentedControl!
     public var selectedSegment = 0
     public var movieTitle: String = "";

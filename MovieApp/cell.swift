@@ -15,6 +15,7 @@ class cell: UITableViewCell {
     var overview:String!
     var actors:String!
     var id:Int!
+    var ratingScore:String!
     
     
     static let reuseIdentifier = String(describing: cell.self)
@@ -48,7 +49,7 @@ class cell: UITableViewCell {
             print(actor.count)
             if(actor.count>2){
                 self?.actors = actor[0].name + ", " + actor[1].name + ", " + actor[2].name + " and more..."
-                _ = model.getMovieTitle(id: self?.id ?? 0, backdrop: self?.backdropURL ?? URL(fileURLWithPath: "http://apple.ch"), overview: self?.overview ?? "", rating: self?.rating.text! ?? "", actors: self?.actors ?? "")
+                _ = model.getMovieTitle(id: self?.id ?? 0, backdrop: self?.backdropURL ?? URL(fileURLWithPath: "http://apple.ch"), overview: self?.overview ?? "", rating: self?.ratingScore ?? "", actors: self?.actors ?? "")
                 model.changeMovieTitle(id: self?.id ?? 0, newTitle: self?.movieTitle.text! ?? "")
                 self?.favorited = true
                 self?.addedLabel.text = "added"
