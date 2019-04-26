@@ -57,7 +57,7 @@ class ViewController2: UIViewController {
             rateButton.setTitle("Rate this movie", for: UIControl.State.normal)
             watchNextButton.setTitle("What to watch next", for: UIControl.State.normal)
             ratingBar.isHidden = true
-            personalRating.text = "Personal rating: "+String(ratingBar.selectedSegmentIndex)
+            personalRating.text = "Personal rating: "+String(ratingBar.selectedSegmentIndex+1)
         }
         else{
             //show movies to watch next
@@ -80,6 +80,7 @@ class ViewController2: UIViewController {
         let personalRating_ = model.getMovieRating(id: self.id)
         if(personalRating_ != -1){
         personalRating.text = "Personal rating: "+String(model.getMovieRating(id: self.id))
+        ratingBar.selectedSegmentIndex = personalRating_-1
         }
         else{
             personalRating.text = "Rate this movie to show personal rating"
@@ -87,8 +88,8 @@ class ViewController2: UIViewController {
         
         if(!self.isFavorite){
             rateButton.isHidden = true
+            personalRating.isHidden = true
         }
-        
     }
     
     
