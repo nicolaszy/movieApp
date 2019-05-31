@@ -131,6 +131,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         setupTableView()
         loadNewMovies()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+       
+    }
+    
+    override func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     private func setupTableView(){
@@ -315,3 +324,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
 }
 
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
