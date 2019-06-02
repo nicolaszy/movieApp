@@ -5,7 +5,7 @@
       location = "group:/Users/nicolaskalousek/Documents/GitHub/movieApp/Model/ActorResults.swift">
    </FileRef>
    <FileRef
-      location = "group:MovieApp.xcodeproj">
+      location = "group:/Users/nicolaskalousek/Documents/GitHub/movieApp/MovieApp.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -46,7 +46,7 @@
 		9F610DEB224001E900271003 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		9F610DED2240020C00271003 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		9F7672C8226F05FE00F7B671 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
-		9F7672CC226F0C1A00F7B671 /* ActorResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActorResults.swift; path = /Users/nicolaskalousek/Documents/GitHub/movieApp/Model/ActorResults.swift; sourceTree = "<absolute>"; };
+		9F7672CC226F0C1A00F7B671 /* ActorResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorResults.swift; sourceTree = "<group>"; };
 		9FE967E4224CB73B005F39A7 /* FavoriteMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieModel.swift; sourceTree = "<group>"; };
 		9FE967E6224CB7BC005F39A7 /* FavoriteMovieItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieItem.swift; sourceTree = "<group>"; };
 		E8BC404065D3ED348095F20B /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
